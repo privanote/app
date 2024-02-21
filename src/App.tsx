@@ -1,4 +1,4 @@
-import { Previewer } from './modules/Previewer';
+import { Previewer } from "./modules/Previewer";
 
 const markdown = `
 # Heading

@@ -1,13 +1,18 @@
-import { useMemo } from 'react';
-import parse from 'html-react-parser';
-import { marked } from 'marked';
+import { useMemo } from "react";
+import { previewService } from "../services/preview";
 
 type PreviewerProps = {
   input: string;
 }
 
+/**
+  * The previewer which displays the formatted markup text.
+  */
 export function Previewer({ input }: PreviewerProps) {
-  const content = useMemo(() => parse(marked(input)), [input]); 
+  // Parse the input received.
+  const content = useMemo(() => {
+    return previewService.parse(input, "markdown")
+  }, [input]); 
 
   return (
     <div>
