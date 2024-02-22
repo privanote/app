@@ -1,4 +1,4 @@
-export function Note({ children }) {
+export function Note({ children }: React.PropsWithChildren) {
   return (
     <li className="px-8 py-4 -ml-8 border-y border-zinc-900 hover:bg-zinc-900 cursor-pointer">
       {children}
@@ -6,13 +6,13 @@ export function Note({ children }) {
   );
 }
 
-function Heading({ children }) {
+function Heading({ children }: React.PropsWithChildren) {
   return (
     <h3 className="font-medium">{children}</h3>
   );
 }
 
-function Summary({ children }) {
+function Summary({ children }: React.PropsWithChildren) {
   return (
     <p className="text-xs text-zinc-300">
       {children}

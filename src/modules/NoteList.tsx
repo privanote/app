@@ -10,7 +10,7 @@ export function NoteList() {
         <li className="font-bold text-3xl px-8 py-4 -ml-8 border-y border-zinc-900 hover:bg-zinc-900 cursor-pointer">
           <div className="text-center">+</div>
         </li>
-        { Array.from({ length: 8 }).map(n => (
+        { Array.from({ length: 8 }).map(() => (
           <Note>
             <Note.Heading>
               Heading
