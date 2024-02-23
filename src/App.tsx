@@ -1,7 +1,11 @@
+import { Spacer } from "./components/Spacer";
 import { NoteList } from "./modules/NoteList";
 import { Sidebar } from "./modules/Sidebar";
+import { SidebarItem } from "./modules/sidebar/SidebarItem";
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import { FileText as NotesIcon, Inbox as InboxIcon, Hash as TagIcon, Trash2 as TrashIcon } from "react-feather";
+
+const mockTags = ["finance", "shopping", "ideas"];
 
 function App() {
   return (
@@ -11,29 +15,20 @@ function App() {
           <Sidebar>
             <Sidebar.Heading>My Notebook</Sidebar.Heading>
             <ul className="-ml-8">
-              <li className="mt-2 text-zinc-200">
-                <button className="flex gap-2 items-center text-left text-xs py-2 px-8 w-full border border-transparent hover:border-zinc-800 transition-colors hover:bg-zinc-900">
-                  <NotesIcon size={16} />
-                  <span>All Notes</span>
-                </button>
-                <button className="flex gap-2 items-center text-left text-xs py-2 px-8 w-full border border-transparent hover:border-zinc-800 transition-colors hover:bg-zinc-900">
-                  <InboxIcon size={16} />
-                  <span>Inbox</span>
-                </button>
-                <button className="flex gap-2 items-center text-left text-xs py-2 px-8 w-full border border-transparent hover:border-zinc-800 transition-colors hover:bg-zinc-900">
-                  <TrashIcon size={16} />
-                  <span>Trash</span>
-                </button>
-              </li>
+              <Spacer className="h-2" />
+              <SidebarItem startDecorator={<NotesIcon size={16}/>}>
+                Notes
+              </SidebarItem>
+              <SidebarItem startDecorator={<InboxIcon size={16}/>}>
+                Inbox
+              </SidebarItem>
+              <SidebarItem startDecorator={<TrashIcon size={16}/>}>
+                Trash
+              </SidebarItem>
             </ul>
-            <div className="h-32"></div>
+            <Spacer className="h-6" />
             <ul className="-ml-8">
-              <li>
-                <button className="flex gap-2 items-center text-left text-xs py-2 px-8 w-full border border-transparent hover:border-zinc-800 transform-colors hover:bg-zinc-900">
-                  <TagIcon size={16} />
-                  <span>finance</span>
-                </button>
-              </li>
+              { mockTags.map(t => <SidebarItem startDecorator={<TagIcon size={16} />}>{t}</SidebarItem>)}
             </ul>
           </Sidebar>
         </Panel>

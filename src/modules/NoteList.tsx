@@ -1,14 +1,6 @@
 import { Note } from "./noteList/Note";
+import { Spacer } from "../components/Spacer";
 import { FilePlus as CreateNoteIcon } from "react-feather";
-
-type SpacerProps = {
-  /** Only accepts Tailwind height classes.*/
-  className: `h-${number}`;
-};
-
-function Spacer(props: SpacerProps) {
-  return <div {...props}></div>
-}
 
 export function NoteList() {
   return (
