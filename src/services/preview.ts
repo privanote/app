@@ -1,4 +1,3 @@
-import parseHtmlComponent from 'html-react-parser';
 import { marked } from 'marked';
 
 interface ParsingStrategy {
@@ -10,9 +9,9 @@ interface ParsingStrategy {
 }
 
 class MarkdownStrategy implements ParsingStrategy {
-  parse(input: string): React.Element {
-    const output = marked(input);
-    return parseHtmlComponent(output)   
+  parse(input: string): string {
+    const output = marked.parse(input) as string;
+    return output;   
   }
 }
 
@@ -34,7 +33,7 @@ class PreviewService {
     * @param type - Markup language
     * @return HTML string
     */
-  parse(input: string, type: SupportedMarkup): React.Element {
+  parse(input: string, type: SupportedMarkup): string {
     // Instantiate a strategy and parse the input.
     const strategy = new this.strategies[type];
     return strategy.parse(input);

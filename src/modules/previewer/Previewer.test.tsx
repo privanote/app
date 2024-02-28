@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test";
-import { render, screen } from "@testing-library/react";
+import { describe, expect, test,  } from "bun:test";
+import { render } from "@testing-library/react";
 import { Previewer } from '../Previewer';
 
 describe("Previewer", () => {
@@ -19,8 +19,10 @@ This is **bold text**.
     const h2 = container.querySelector("h2");
     const strong = container.querySelector("strong");
 
-    expect(h1.textContent).toEqual("Heading 1");
-    expect(h2.textContent).toEqual("Heading 2");
-    expect(strong.textContent).toEqual("bold text");
+    // Expect elements not to be falsy.
+    expect([h1, h2, strong].every(el => !!el));
+    expect(h1!.textContent).toEqual("Heading 1");
+    expect(h2!.textContent).toEqual("Heading 2");
+    expect(strong!.textContent).toEqual("bold text");
   });
 });
